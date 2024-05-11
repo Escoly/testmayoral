@@ -3,7 +3,13 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function ProductCard({ product }: { product: IProduct }) {
+export default function ProductCard({
+  product,
+  index,
+}: {
+  product: IProduct;
+  index: number;
+}) {
   const handleFormattPrice = (price: string) => {
     return price.replace(/\./g, ",");
   };
@@ -18,17 +24,17 @@ export default function ProductCard({ product }: { product: IProduct }) {
   };
 
   const handleAddToCart = (e: any) => {
-    e.preventDefault()
-    console.log('product added to cart');
+    e.preventDefault();
+    console.log("product added to cart");
   };
 
   return (
-    <article role="productCard">
-      <Link
-        className="flex flex-col items-center border-blue-200 border-2 rounded-md p-2 text-xs shadow-md	 sm:p-6 md:text-md lg:text-lg"
-        key={product.title}
-        href={"/not-found"}
-      >
+    <li
+      key={index}
+      role="productCard"
+      className="flex flex-col items-center border-blue-200 border-2 rounded-md p-2 text-xs shadow-md	 sm:p-6 md:text-md lg:text-lg"
+    >
+      <Link key={product.title} href={"/not-found"}>
         <Image
           src={product.imgUrl}
           alt={"product image"}
@@ -66,6 +72,6 @@ export default function ProductCard({ product }: { product: IProduct }) {
           </button>
         </div>
       </Link>
-    </article>
+    </li>
   );
 }

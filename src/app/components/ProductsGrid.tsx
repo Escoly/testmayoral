@@ -32,7 +32,7 @@ export default function ProductsGrid() {
   }, [query, listOrder]);
 
   return (
-    <section
+    <ul
       role="productsGrid"
       className={
         columnWidth === "normal"
@@ -42,7 +42,7 @@ export default function ProductsGrid() {
     >
       {productsList.length > 0 ? (
         productsList.map((product: IProduct, index: number) => {
-          return <ProductCard product={product} key={index} />;
+          return <ProductCard product={product} index={index} />;
         })
       ) : (
         <>
@@ -53,6 +53,6 @@ export default function ProductsGrid() {
           )}
         </>
       )}
-    </section>
+    </ul>
   );
 }
