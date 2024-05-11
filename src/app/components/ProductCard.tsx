@@ -17,12 +17,17 @@ export default function ProductCard({ product }: { product: IProduct }) {
     return handleFormattPrice(discountedPrice);
   };
 
+  const handleAddToCart = (e: any) => {
+    e.preventDefault()
+    console.log('product added to cart');
+  };
+
   return (
     <article role="productCard">
       <Link
         className="flex flex-col items-center border-blue-200 border-2 rounded-md p-2 text-xs shadow-md	 sm:p-6 md:text-md lg:text-lg"
         key={product.title}
-        href={"#"}
+        href={"/not-found"}
       >
         <Image
           src={product.imgUrl}
@@ -40,7 +45,9 @@ export default function ProductCard({ product }: { product: IProduct }) {
               product.discount ? "line-through	text-gray-400" : "text-gray-700"
             }
           >
-            {product.discount ? `${handleFormattPrice(product.price.toString())}€` : ""}
+            {product.discount
+              ? `${handleFormattPrice(product.price.toString())}€`
+              : ""}
           </p>
           <p className={product.discount ? "text-red-400" : "text-gray-700"}>
             {product.discount
@@ -50,7 +57,11 @@ export default function ProductCard({ product }: { product: IProduct }) {
           <span className="text-gray-500">
             {product.hasMoreColors && <p>más colores</p>}
           </span>
-          <button className="bg-blue-500 py-1 px-2 rounded-md white text-white align-bottom hover:bg-blue-600 hover:scale-105">
+          <button
+            name="button"
+            className="bg-blue-500 py-1 px-2 rounded-md white text-white align-bottom hover:bg-blue-600 hover:scale-105"
+            onClick={(e) => handleAddToCart(e)}
+          >
             Añadir
           </button>
         </div>
