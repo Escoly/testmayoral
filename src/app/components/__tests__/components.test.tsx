@@ -27,11 +27,11 @@ jest.mock("next/navigation", () => {
   };
 });
 const mockProduct = {
-    discount: "20",
+    discount: 20,
     hasMoreColors: false,
     imgUrl:
       "https://assets.mayoral.com/images/t_auto_img,f_auto,c_limit,w_750/v1698612694/24-03011-077-XL-1/camiseta-animales-better-cotton-nino-milk-XL-1.jpg",
-    price: "15.99",
+    price: 15.99,
     title: "Camiseta animales Better Cotton niño",
   };
 
